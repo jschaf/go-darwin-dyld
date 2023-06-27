@@ -29,10 +29,10 @@ make run_go # runs main.go
 ```
 
 The bug is related to `DYLD_INSERT_LIBRARIES`. To run `exec.Command` without the
-env var set, run:
+`DYLD_INSERT_LIBRARIES` env var set, run:
 
 ```shell
-SKIP_DYLD=1 make run_go
+make skip_dyld=1 run_go
 
 # Output:
 # running  /opt/p/go-darwin-dyld/file_ops

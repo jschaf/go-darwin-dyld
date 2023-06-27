@@ -1,12 +1,12 @@
 
-run_go: file_ops fslog_dylib
-	go run ./main.go
+run_go: build_file_ops build_fslog_dylib main.go
+	SKIP_DYLD=$(skip_dyld) go run ./main.go
 
-run_shell: file_ops fslog_dylib
+run_shell: build_file_ops build_fslog_dylib
 	DYLD_INSERT_LIBRARIES=./fslog.dylib ./file_ops
 
-file_ops: file_ops.c
+build_file_ops: file_ops.c
 	clang -o file_ops file_ops.c
 
-fslog_dylib: fslog.c
+build_fslog_dylib: fslog.c
 	clang -dynamiclib -o fslog.dylib fslog.c

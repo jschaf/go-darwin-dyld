@@ -10,6 +10,7 @@ import (
 
 func main() {
 	skipDyld := os.Getenv("SKIP_DYLD") != ""
+	fmt.Printf("main.go start: skipDyld=%v\n", skipDyld)
 
 	wd, err := os.Getwd()
 	if err != nil {
@@ -30,5 +31,5 @@ func main() {
 		fmt.Printf("err: %v\noutput: %s\n", err, string(output))
 		os.Exit(1)
 	}
-	fmt.Printf("output: %s\n", output)
+	fmt.Printf("output:\n%s\n", string(output))
 }
